@@ -1,0 +1,259 @@
+.categ{
+    margin: 0 -18px;
+    text-align: right;
+    width:50vw;
+    min-width: 320px;
+    margin: 0 auto;
+    display: flex;
+    min-height: 60vh;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0%;
+    position: relative;
+    z-index: 1;
+    height: auto;
+}
+.title{
+    top: 3vh;
+    left: 4vw;
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    position: relative;
+    width: 88%;
+    font-size: xx-large;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    color: rgb(48, 5, 5);
+}
+.love{
+    width: 100vw;
+    position: relative;
+    top: -5vh;
+}
+.plove{
+    position: relative;
+    color: rgb(146, 68, 68);
+    right: 32vw;
+    top: 10vh;
+}
+#li1,#li2,#li3{
+    color: #772f2f;
+    font-weight: bold;
+}
+.bon-appetit{
+    position: relative;
+    top: 5vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: x-large;
+    color: rgb(27, 26, 26);
+}
+.picture{
+    padding-bottom: 30px;
+    padding-top: 0px;
+    width: 44vw;
+}
+.p{
+    position: relative;
+    left: 0vw;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+    margin: 8px;
+    font-weight:540;
+}
+.about{
+    margin-bottom: 20px;
+    margin-left: 20px;
+    border-top: 1px solid #c59797;
+    border-bottom: 1px solid #c59797;
+}
+.li{
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+    display: block;
+    color: #3e2a1d;
+    margin-bottom: 4px;
+    font-weight: 400;
+    list-style: none;
+}
+.bodyabout{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: end;
+    -webkit-align-items: flex-end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    margin-right: 0;
+    margin-left: 0;
+    width: 44vw;
+    padding: 0px;
+}
+.li1{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.6rem;
+    line-height: 1.8rem;
+    color: #c5b997;
+    text-align: center;
+    font-weight: 700;
+    padding-right: 0;
+    margin-bottom: 0;
+    white-space: normal;
+    width: 25%;
+}
+.instructions{
+    width: 45vw;
+    position: relative;
+    right: 0vw;
+    margin-top: 5vh;
+}
+.i{
+    position: relative;
+    margin: 20px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: #23150c;
+    font-size: 16.5px;
+}
+/* From Uiverse.io by catraco */ 
+.heart-container {
+    --heart-color: rgb(146, 68, 68);
+    position: relative;
+    width: 50px;
+    height: 50px;
+    transition: .3s;
+    top: 2vh;
+    right: 38vw;
+    margin: 10px;
+    display: flex;
+  }
+  
+  
+  .heart-container .checkbox {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 20;
+    cursor: pointer;
+  }
+  
+  .heart-container .svg-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .heart-container .svg-outline,
+          .heart-container .svg-filled {
+    fill: var(--heart-color);
+    position: absolute;
+  }
+  
+  .heart-container .svg-filled {
+    animation: keyframes-svg-filled 1s;
+    display: none;
+  }
+  
+  .heart-container .svg-celebrate {
+    position: absolute;
+    animation: keyframes-svg-celebrate .5s;
+    animation-fill-mode: forwards;
+    display: none;
+    stroke: var(--heart-color);
+    fill: var(--heart-color);
+    stroke-width: 2px;
+  }
+  
+  .heart-container .checkbox:checked~.svg-container .svg-filled {
+    display: block
+  }
+  
+  .heart-container .checkbox:checked~.svg-container .svg-celebrate {
+    display: block
+  }
+  .notfound{
+    position: relative;
+    top: 20vh;
+  }
+  @keyframes keyframes-svg-filled {
+    0% {
+      transform: scale(0);
+    }
+  
+    25% {
+      transform: scale(1.2);
+    }
+  
+    50% {
+      transform: scale(1);
+      filter: brightness(1.5);
+    }
+  }
+  
+  @keyframes keyframes-svg-celebrate {
+    0% {
+      transform: scale(0);
+    }
+  
+    50% {
+      opacity: 1;
+      filter: brightness(1.5);
+    }
+  
+    100% {
+      transform: scale(1.4);
+      opacity: 0;
+      display: none;
+    }
+  }
+  
+  .noFavorites{
+    position: relative;
+    bottom:  70vh;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: #23150c;
+    font-size: 16.5px;
+  }
+  .homeImage3{
+    background-color: rgb(245, 244, 240);
+    position: relative;
+    padding-top: 3vh;
+    padding-bottom: 100vh;
+    z-index: 0;
+    top: 9vh;
+}
+  @media(max-width: 850px){
+    .homeImage3{
+      top: 5vh;
+    }
+    .categ{
+      margin: 10px 30px 10px 10px;
+      width: 80%;
+    }
+    .picture{
+      width: 100%;
+    }
+    .about{
+      width: 100%;
+    }
+    .bodyabout{
+      width: 100%;
+    }
+    .instructions{
+      width: 100%;
+    }
+    .heart-container {
+      right: 80%;
+    }
+    .plove{
+      right: 60%;
+    }
+  }

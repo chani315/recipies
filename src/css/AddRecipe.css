@@ -1,0 +1,32 @@
+.homeImage4 {
+    background-image: url('/public/images/home2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    overflow: auto;
+}
+
+@media (max-width: 768px) {
+    .homeImage4 {
+        background-attachment: scroll; /* שיפור ביצועים במסכים קטנים */
+        width: 100vw;
+        position: relative;
+        top: 8vh;
+    }
+
+    .form-container {
+        width: 90%;
+        padding: 2%;
+        margin: 5% auto;
+    }
+}
+.form{
+    max-width: 600;
+    background-color: 'white';
+       width: '800px';
+        padding: '3.5%';
+         margin: '7%';
+          position: 'relative';
+           right: '20vw'
+}

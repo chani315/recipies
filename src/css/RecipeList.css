@@ -1,0 +1,70 @@
+.homeImage3{
+    background-color: rgb(245, 244, 240);
+    position: relative;
+    padding-top: 3vh;
+    padding-bottom: 100vh;
+    z-index: 0;
+    top: 9vh;
+}
+.allRecipes{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center
+}
+.imagesDiv{
+    width: 341px;
+    height: 294px;
+    border: 2px solid rgb(108, 43, 10);
+    background-color: white;
+    margin: 25px 8px 25px 8px;
+    color: #3e2a1d;
+    font-size: 1.3rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-around
+}
+.rcapiyImage{
+    width: 100%;
+    position: relative;
+    top: 0vh;
+    /* left: 10vw; */
+}
+.hoverDetails {
+    position: relative;
+    top: -295px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    opacity: 0;
+    height: 294px;
+    width: 341px;
+    text-decoration: none;
+    font-size: larger;
+}
+.hoverDetails:hover {
+    opacity: 1.5;
+}
+    
+    /* ביטול כל הקווים התחתיים בקישורים */
+.allRecipes a {
+    text-decoration: none;
+}
+    
+/* במידה ויש קווים תחתיים במצבי רחיפה או לחיצה */
+.allRecipes a:visited, 
+.allRecipes a:hover, 
+.allRecipes a:active {
+    text-decoration: none;
+}
+.topDetails{
+    height: 20%;
+}
+@media(max-width: 850px){
+    .homeImage3{
+        top: 5vh;
+      }
+}

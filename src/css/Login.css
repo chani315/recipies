@@ -1,0 +1,11 @@
+.homeImage2{
+    position: fixed;
+    width: 100%;
+    height: 100vh; /* גובה המסך */
+    background-image: url('/public/images/home2.jpg');
+    /* background-image: url('../'); */
+    background-size: cover; /* תמונה שתכסה את כל האזור */
+    top: 9vh;
+    right: 0%;
+    /* left: 50%; */
+}

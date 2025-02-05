@@ -1,0 +1,38 @@
+body{
+    background-color: black;
+}
+.homeImage{
+    position: relative;
+    height: 100%;
+    top: 9vh;
+    width: 100vw;
+    
+}
+.siteName{
+    font-size: 11vw;
+    font-weight: bold;
+    position: absolute;
+    top: -2%;
+    left: 17%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #dfdbd0;
+    text-shadow: 3px 3px 6px black;
+  }
+
+
+@media (max-width: 768px) {
+    .siteName {
+        font-size: 20vw; /* הקטנת גודל הטקסט למסכים קטנים */
+        left: 50%;
+        transform: translateX(-50%); /* ממורכז גם במובייל */
+    }
+    body{
+        background-image: url('/public/images/home.jpg');
+        background-repeat: repeat;
+    }
+    .homeImage {
+        
+        height: 60vh; /* צמצום הגובה במסכים קטנים */
+        visibility: hidden;
+    }
+}
