@@ -4,7 +4,6 @@ import AppBar from './Components/AppBar';
 import React, { Suspense } from 'react';
 import { Link, Route, Routes, Router } from 'react-router-dom';
 import Home from './Components/Home';
-import { useSelector } from 'react-redux';
 
 const LazyRecipeList=React.lazy(()=>import("./Components/RecipeList"))
 const LazyLogin=React.lazy(()=>import("./Components/Login"))
@@ -14,8 +13,6 @@ const LazyAddRecipe=React.lazy(()=>import("./Components/AddRecipe"))
 const LazyPage404=React.lazy(()=>import("./Components/Page404"))
 
 function App() {
-  const userObj = useSelector(x=>x.RecipeSlice)
-  console.log(userObj)
   return (
     <div className="App">
       <AppBar/>

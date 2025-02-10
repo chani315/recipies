@@ -1,31 +1,42 @@
-import "../css/AddRecipe.css";
-import React, { useState } from 'react';
-import { useDispatch } from "react-redux";
-import { useSelector } from 'react-redux';
-import { useForm, Controller } from "react-hook-form";
-import { FormHelperText, TextField, Button, Select, MenuItem, FormControl, InputLabel, Typography, Box } from '@mui/material';
-import { AddRecipe } from '../Store/RecipeSlice';
+// ייבוא מודולים ורכיבים דרושים
+import "../css/AddRecipe.css"; // ייבוא קובץ ה-CSS עבור הרכיב
+import React, { useState } from 'react'; // ייבוא React ושימוש ב-useState לניהול מצב
+import { useDispatch } from "react-redux"; // ייבוא פונקציה לדחיפת פעולות ל-Redux
+import { useSelector } from 'react-redux'; // ייבוא פונקציה לבחירת נתונים מ-Redux
+import { useForm, Controller } from "react-hook-form"; // ייבוא React Hook Form לניהול ואימות טפסים
+import { FormHelperText, TextField, Button, Select, MenuItem, FormControl, InputLabel, Typography, Box } from '@mui/material'; // ייבוא רכיבי חומרי מ-MUI
+import { AddRecipe } from '../Store/RecipeSlice'; // ייבוא פעולה להוספת מתכון ל-Redux
 
+// הגדרת רכיב ה-RecipeForm
 function RecipeForm() {
+  // פונקציה לדחיפת פעולות ל-Redux
   const dispatch = useDispatch();
+  
+  // אתחול ה-hooks של הטופס
   const { register, handleSubmit, formState: { errors }, control } = useForm();
 
+  // מצב לניהול נתוני הטופס
   const [formData, setFormData] = useState({
-    image: '',
+    image: '', // URL של התמונה שהוזנה
   });
 
+  // מצב לקבלת המתכונים הקיימים מ-Redux
   const recipes = useSelector((state) => state.RecipeSlice.recipes);
 
+  // פונקציה לטיפול בהעלאת קובץ תמונה
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      // עדכון מצב התמונה המוצגת
       setFormData({ ...formData, image: URL.createObjectURL(file) });
     }
   };
 
+  // אתחול מצבים עבור שדות דינמיים (רכיבים והוראות הכנה)
   const [ingredients, setIngredients] = useState(['']);
   const [instructions, setInstructions] = useState(['']);
 
+  // פונקציה להוספת רכיב או הוראת הכנה חדשה
   const addToArray = (field) => {
     if (field === 'ingredients') {
       setIngredients([...ingredients, '']);
@@ -34,6 +45,7 @@ function RecipeForm() {
     }
   };
 
+  // פונקציה להסרת רכיב או הוראת הכנה לפי אינדקס
   const removeFromArray = (index, field) => {
     if (field === 'ingredients') {
       const updatedIngredients = ingredients.filter((_, i) => i !== index);
@@ -44,6 +56,7 @@ function RecipeForm() {
     }
   };
 
+  // פונקציה לטיפול בשינויים ברכיבים והוראות הכנה
   const handleArrayChange = (index, value, field) => {
     if (field === 'ingredients') {
       const updatedIngredients = ingredients.map((ingredient, i) => i === index ? value : ingredient);
@@ -54,29 +67,33 @@ function RecipeForm() {
     }
   };
 
+  // פונקציה לשליחה של הטופס
   const onSubmit = (data) => {
-    alert('המתכון נוסף בהצלחה!');
+    alert('המתכון נוסף בהצלחה!'); // הודעה למשתמש לאחר שליחה מוצלחת
     dispatch(AddRecipe({
-      id: recipes.length+1,
-      favorite: false,
-      category: data.category,
-      title: data.name,
-      image: formData.image, // Use formData.image for image
-      time: data.preparationTime,
-      level: data.difficulty,
-      amount: data.servings,
-      products: ingredients,
-      instructions: instructions,
+      id: recipes.length+1, // יצירת מזהה ייחודי עבור המתכון החדש
+      favorite: false, // המתכון לא מועדף בהתחלה
+      category: data.category, // קטגוריית המתכון (חלבי, בשרי, פרווה)
+      title: data.name, // שם המתכון
+      image: formData.image, // התמונה שהוזנה
+      time: data.preparationTime, // זמן ההכנה
+      level: data.difficulty, // רמת הקושי
+      amount: data.servings, // כמות מנות
+      products: ingredients, // רשימת רכיבים
+      instructions: instructions, // רשימת הוראות הכנה
     }));
   };
 
   return (
     <div className="homeImage4">
+      {/* קונטיינר של הטופס עם עיצוב */}
       <Box sx={{ maxWidth: 600, mx: 'auto', backgroundColor: 'white', width: '50vw', padding: '3.5%', margin: '7%', position: 'relative', right: '20vw' }}>
         <Typography variant="h4" mb={2} color='#813b46'>
-          הוסף מתכון
+          הוסף מתכון {/* כותרת של הטופס */}
         </Typography>
+        {/* טופס המתכון */}
         <form onSubmit={handleSubmit(onSubmit)}>
+          {/* שדה שם המתכון */}
           <TextField
             fullWidth
             label="שם מתכון"
@@ -86,8 +103,8 @@ function RecipeForm() {
             error={!!errors.name}
           />
           {errors.name && (<FormHelperText sx={{ color: "red" }}>{errors.name.message}</FormHelperText>)}
-          
-          
+
+          {/* שדה זמן הכנה */}
           <TextField
             fullWidth
             label="זמן הכנה"
@@ -98,6 +115,7 @@ function RecipeForm() {
           />
           {errors.preparationTime && (<FormHelperText sx={{ color: "red" }}>{errors.preparationTime.message}</FormHelperText>)}
 
+          {/* שדה כמות מנות באמצעות Controller */}
           <Controller
             name="servings"
             control={control}
@@ -114,6 +132,7 @@ function RecipeForm() {
             )}
           />
 
+          {/* שדה קטגוריה */}
           <FormControl fullWidth margin="normal">
             <InputLabel>קטגוריה</InputLabel>
             <Controller
@@ -132,6 +151,7 @@ function RecipeForm() {
             {errors.category && <FormHelperText sx={{ color: "red" }}>{errors.category.message}</FormHelperText>}
           </FormControl>
 
+          {/* שדה רמת קושי */}
           <FormControl fullWidth margin="normal">
             <InputLabel>רמת קושי</InputLabel>
             <Controller
@@ -149,6 +169,8 @@ function RecipeForm() {
             />
             {errors.difficulty && <FormHelperText sx={{ color: "red" }}>{errors.difficulty.message}</FormHelperText>}
           </FormControl>
+
+          {/* שדה העלאת תמונה */}
           <Box margin="normal">
             <InputLabel color='#813b46'>תמונה</InputLabel>
             <TextField
@@ -159,6 +181,8 @@ function RecipeForm() {
             />
             {formData.image && <img src={formData.image} alt="Preview" style={{ width: '100%', marginTop: '8px' }} />}
           </Box>
+
+          {/* רכיבים */}
           <Typography variant="h6" mt={2} color='#813b46'>
             רכיבים
           </Typography>
@@ -180,6 +204,7 @@ function RecipeForm() {
           ))}
           <Button color='#813b46' onClick={() => addToArray('ingredients')}>הוסף רכיב</Button>
 
+          {/* הוראות הכנה */}
           <Typography variant="h6" mt={2} color='#813b46'>
             הוראות הכנה
           </Typography>
@@ -201,7 +226,7 @@ function RecipeForm() {
           ))}
           <Button color='#813b46' onClick={() => addToArray('instructions')}>הוסף הוראות</Button>
 
-          
+          {/* כפתור שליחה */}
           <Button type="submit" variant="contained" color="primary" fullWidth backgroundColor="#813b46" sx={{ backgroundColor: '#813b46' }}>
             שלח מתכון
           </Button>
